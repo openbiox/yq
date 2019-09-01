@@ -4,3 +4,6 @@
 ^README\.Rmd$
 ^\.github$
 ^CODE_OF_CONDUCT\.md$
+^appveyor\.yml$
+^\.travis\.yml$
+^codecov\.yml$

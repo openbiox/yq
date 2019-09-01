@@ -7,6 +7,12 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/ShixiangWang/yq?branch=master&svg=true)](https://ci.appveyor.com/project/ShixiangWang/yq)
+[![Travis build
+status](https://travis-ci.org/ShixiangWang/yq.svg?branch=master)](https://travis-ci.org/ShixiangWang/yq)
+[![Codecov test
+coverage](https://codecov.io/gh/ShixiangWang/yq/branch/master/graph/badge.svg)](https://codecov.io/gh/ShixiangWang/yq?branch=master)
 <!-- badges: end -->
 
 ## Installation
