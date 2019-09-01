@@ -1,2 +1,6 @@
-^yunque\.Rproj$
+^yq\.Rproj$
 ^\.Rproj\.user$
+^LICENSE\.md$
+^README\.Rmd$
+^\.github$
+^CODE_OF_CONDUCT\.md$

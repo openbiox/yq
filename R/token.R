@@ -12,8 +12,6 @@
 #' if no token is available.
 #'
 #' @export
-#' @examples
-#' yq_token()
 
 yq_token <- function() {
   Sys.getenv("YUQUE_TOKEN", unset = "")
@@ -21,7 +19,7 @@ yq_token <- function() {
 
 yq_auth <- function(token) {
   if (isTRUE(token != "")) {
-    c("Authorization" = paste("token", token))
+    c("X-Auth-Token" = token)
   } else {
     character()
   }
