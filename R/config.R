@@ -1,7 +1,20 @@
 # config
 .yuque_config_path = "~/.yuque.json"
 
+#' Configure YuQue
+#'
+#' Ask some questions to user and save configuration to local file.
+#'
+#' More details see [yq_whoami], [yq_token].
+#'
+#' @return Nothing.
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#' if (interactive())
+#'   yq_config()
+#' }
 yq_config = function() {
     config = list()
     config$login = ""
@@ -44,8 +57,26 @@ yq_config = function() {
     }
 
     message("Saving info to ", .yuque_config_path)
-    jsonlite::write_json(config, path = .yuque_config_path)
+    update_config(config, path = .yuque_config_path)
+
     message("Done. Enjoy this tool.\n- Shixiang")
+}
+
+update_config = function(x, path) {
+    if (!file.exists(path)) {
+        jsonlite::write_json(x, path = path)
+    } else {
+        up_config = jsonlite::read_json(path, simplifyVector = TRUE)
+        up_names = names(up_config)
+        for (i in names(x)) {
+            ifelse(i %in% up_names,
+                   message("Updating ", i),
+                   message("Adding ", i))
+            up_config[[i]] = x[[i]]
+        }
+        jsonlite::write_json(up_config, path = path)
+    }
+
 }
 
 #jsonlite::read_json("test.json", simplifyVector = TRUE)

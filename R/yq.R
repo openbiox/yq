@@ -43,7 +43,7 @@ NULL
 #'   existing file.  Defaults to FALSE.
 #' @param .token Authentication token. Default to YUQUE_TOKEN
 #'   environment variables, in this order if any is set.
-#' @param .api_url Github API url (default: \url{https://www.yuque.com/api/v2}). Used
+#' @param .api_url YuQue API url (default: \url{https://www.yuque.com/api/v2}). Used
 #'   if \code{endpoint} just contains a path. Default to YuQue_API_URL
 #'   environment variable if set.
 #' @param .method HTTP method to use if not explicitly supplied in the

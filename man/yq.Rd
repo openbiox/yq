@@ -40,7 +40,7 @@ be written to disk in the form sent.}
 \item{.overwrite}{if \code{destfile} is provided, whether to overwrite an
 existing file.  Defaults to FALSE.}
 
-\item{.api_url}{Github API url (default: \url{https://www.yuque.com/api/v2}). Used
+\item{.api_url}{YuQue API url (default: \url{https://www.yuque.com/api/v2}). Used
 if \code{endpoint} just contains a path. Default to YuQue_API_URL
 environment variable if set.}
 

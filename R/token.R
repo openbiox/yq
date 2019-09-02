@@ -16,7 +16,10 @@
 yq_token <- function() {
   if (file.exists(.yuque_config_path)) {
     token = jsonlite::read_json(.yuque_config_path, simplifyVector = TRUE)$token
+  } else {
+      token = ""
   }
+
   if (token != "") {
     return(token)
   } else {

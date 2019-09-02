@@ -48,11 +48,20 @@ yq_whoami <- function(.token = NULL, .api_url = NULL, .send_headers = NULL) {
       "For more on what to do with the PAT, see ?yq_whoami.",
       "\n==========================================="
     )
-    login = jsonlite::read_json(.yuque_config_path, simplifyVector = TRUE)$login
-    res <- yq(
-      endpoint = "/users/:login", login = login, .token = .token,
-      .api_url = .api_url, .send_headers = .send_headers
-    )
+    if (file.exists(.yuque_config_path)) {
+        login = jsonlite::read_json(.yuque_config_path, simplifyVector = TRUE)$login
+        res <- yq(
+            endpoint = "/users/:login", login = login, .token = .token,
+            .api_url = .api_url, .send_headers = .send_headers
+        )
+    } else {
+        message(
+            "Also no configure file for YuQue available.\n",
+            "Please either specify .token argument or \n",
+            "set configuration via yq_config()"
+        )
+        return(invisible(NULL))
+    }
   } else {
     res <- yq(
       endpoint = "/user", .token = .token,
