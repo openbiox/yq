@@ -27,7 +27,7 @@
 #'
 #' @inheritParams yq
 #'
-#' @return a `list`
+#' @return a `data.frame`
 #' @export
 #'
 #' @examples

@@ -1,4 +1,6 @@
 api
+AppVeyor
+Codecov
 Github
 https
 JSON
@@ -6,7 +8,8 @@ Lifecycle
 PATs
 shixiangwang
 www
-yq
+yq’
 yuque
 YuQue
 YUQUE
+YuQue’
