@@ -1,6 +1,6 @@
-#' Info on current YuQue user and token
+#' Info on current YuQue user
 #'
-#' Reports basic profile for the current authenticated user.
+#' Reports basic profile for the YuQue user.
 #'
 #' Get a personal access token for the YuQue API from
 #' \url{https://www.yuque.com/settings} and select the scopes necessary for
@@ -36,11 +36,12 @@
 #'
 #' }
 yq_whoami <- function(.token = NULL, .api_url = NULL, .send_headers = NULL) {
+  # //TODO: add code for configured user
   .token <- .token %||% yq_token()
   if (isTRUE(.token == "")) {
     message(
       "No personal access token (PAT) available.\n",
-      "Obtain a PAT from here after you login in:\n",
+      "Obtain a PAT from here after you login in YuQue:\n",
       "https://www.yuque.com/settings/\n",
       "For more on what to do with the PAT, see ?yq_whoami."
     )
@@ -51,32 +52,7 @@ yq_whoami <- function(.token = NULL, .api_url = NULL, .send_headers = NULL) {
     .api_url = .api_url, .send_headers = .send_headers
   )
 
-  if (res$status_code != 200) {
-    stop("Status code: ", res$status_code, ", please check token or internet.", call. = FALSE)
-  } else {
-    content = res %>% content()
-    res = list(
-      type = content$data$type,
-      id = content$data$id,
-      login = content$data$login,
-      name = content$data$name,
-      description = content$data$description,
-      books_count = content$data$books_count,
-      public_books_count = content$data$public_books_count,
-      followers_count = content$data$followers_count,
-      following_count = content$data$following_count,
-      created_at = content$data$created_at,
-      updated_at = content$data$updated_at,
-      limits = res$headers$`x-ratelimit-remaining`
-    )
-  }
-
-  nch = 20
-  lapply(names(res), function(x) {
-    x2 = paste0(x, paste(rep(" ", nch - nchar(x)), collapse = ""))
-    message(x2, ": ", res[[x]])
-    invisible(0)
-  })
+  res = parse_user_info(res)
   invisible(res)
 }
 
