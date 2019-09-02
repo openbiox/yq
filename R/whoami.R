@@ -5,11 +5,13 @@
 #' Get a personal access token for the YuQue API from
 #' \url{https://www.yuque.com/settings} and select the scopes necessary for
 #' your planned tasks. The \code{repo} scope, for example, is one many are
-#' likely to need. The token itself is a string of 40 letters and digits. You
-#' can store it any way you like and provide explicitly via the \code{.token}
+#' likely to need. The token itself is a string of 40 letters and digits.
+#'
+#' You can set it using [yq_config] function. You can also store it any way
+#' you like and provide explicitly via the \code{.token}
 #' argument to \code{\link{yq}()}.
 #'
-#' However, many prefer to define an environment variable \code{YUQUE_TOKEN}
+#' However, you can also define an environment variable \code{YUQUE_TOKEN}
 #' with this value in their \code{.Renviron} file. Add a
 #' line that looks like this, substituting your PAT:
 #'
@@ -43,14 +45,20 @@ yq_whoami <- function(.token = NULL, .api_url = NULL, .send_headers = NULL) {
       "No personal access token (PAT) available.\n",
       "Obtain a PAT from here after you login in YuQue:\n",
       "https://www.yuque.com/settings/\n",
-      "For more on what to do with the PAT, see ?yq_whoami."
+      "For more on what to do with the PAT, see ?yq_whoami.",
+      "\n==========================================="
     )
-    return(invisible(NULL))
+    login = jsonlite::read_json(.yuque_config_path, simplifyVector = TRUE)$login
+    res <- yq(
+      endpoint = "/users/:login", login = login, .token = .token,
+      .api_url = .api_url, .send_headers = .send_headers
+    )
+  } else {
+    res <- yq(
+      endpoint = "/user", .token = .token,
+      .api_url = .api_url, .send_headers = .send_headers
+    )
   }
-  res <- yq(
-    endpoint = "/user", .token = .token,
-    .api_url = .api_url, .send_headers = .send_headers
-  )
 
   res = parse_user_info(res)
   invisible(res)

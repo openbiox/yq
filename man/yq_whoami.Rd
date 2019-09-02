@@ -2,7 +2,7 @@
 % Please edit documentation in R/whoami.R
 \name{yq_whoami}
 \alias{yq_whoami}
-\title{Info on current YuQue user and token}
+\title{Info on current YuQue user}
 \usage{
 yq_whoami(.token = NULL, .api_url = NULL, .send_headers = NULL)
 }
@@ -28,17 +28,19 @@ preview feature of the API.}
 a \code{data.frame}
 }
 \description{
-Reports basic profile for the current authenticated user.
+Reports basic profile for the YuQue user.
 }
 \details{
 Get a personal access token for the YuQue API from
 \url{https://www.yuque.com/settings} and select the scopes necessary for
 your planned tasks. The \code{repo} scope, for example, is one many are
-likely to need. The token itself is a string of 40 letters and digits. You
-can store it any way you like and provide explicitly via the \code{.token}
+likely to need. The token itself is a string of 40 letters and digits.
+
+You can set it using \link{yq_config} function. You can also store it any way
+you like and provide explicitly via the \code{.token}
 argument to \code{\link{yq}()}.
 
-However, many prefer to define an environment variable \code{YUQUE_TOKEN}
+However, you can also define an environment variable \code{YUQUE_TOKEN}
 with this value in their \code{.Renviron} file. Add a
 line that looks like this, substituting your PAT:
 

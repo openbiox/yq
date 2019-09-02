@@ -14,7 +14,14 @@
 #' @export
 
 yq_token <- function() {
-  Sys.getenv("YUQUE_TOKEN", unset = "")
+  if (file.exists(.yuque_config_path)) {
+    token = jsonlite::read_json(.yuque_config_path, simplifyVector = TRUE)$token
+  }
+  if (token != "") {
+    return(token)
+  } else {
+    Sys.getenv("YUQUE_TOKEN", unset = "")
+  }
 }
 
 yq_auth <- function(token) {

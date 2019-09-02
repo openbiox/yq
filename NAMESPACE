@@ -2,6 +2,7 @@
 
 export("%>%")
 export(yq)
+export(yq_config)
 export(yq_token)
 export(yq_whoami)
 importFrom(httr,DELETE)
