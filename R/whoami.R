@@ -37,7 +37,8 @@
 #' yq_whoami()
 #'
 #' }
-yq_whoami <- function(.token = NULL, .api_url = NULL, .send_headers = NULL) {
+yq_whoami <- function(.token = NULL, .api_url = NULL, .send_headers = NULL,
+                      show = TRUE) {
   # //TODO: add code for configured user
   .token <- .token %||% yq_token()
   if (isTRUE(.token == "")) {
@@ -69,7 +70,7 @@ yq_whoami <- function(.token = NULL, .api_url = NULL, .send_headers = NULL) {
     )
   }
 
-  res = parse_user_info(res)
+  res = parse_user_info(res, show = show)
   invisible(res)
 }
 

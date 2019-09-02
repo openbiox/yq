@@ -69,9 +69,10 @@ update_config = function(x, path) {
         up_config = jsonlite::read_json(path, simplifyVector = TRUE)
         up_names = names(up_config)
         for (i in names(x)) {
-            ifelse(i %in% up_names,
-                   message("Updating ", i),
-                   message("Adding ", i))
+            if (i %in% up_names) {
+                message("Updating ", i)
+                message("Adding ", i)
+            }
             up_config[[i]] = x[[i]]
         }
         jsonlite::write_json(up_config, path = path)

@@ -1,4 +1,4 @@
-parse_user_info = function(response) {
+parse_user_info = function(response, show = TRUE) {
     stopifnot(inherits(response, "response"))
 
     if (response$status_code != 200) {
@@ -21,10 +21,14 @@ parse_user_info = function(response) {
         )
     }
 
-    nch = 20
-    lapply(names(response), function(x) {
-        x2 = paste0(x, paste(rep(" ", nch - nchar(x)), collapse = ""))
-        message(x2, ": ", response[[x]])
-        invisible(0)
-    })
+
+    if (show) {
+        nch = 20
+        lapply(names(response), function(x) {
+            x2 = paste0(x, paste(rep(" ", nch - nchar(x)), collapse = ""))
+            message(x2, ": ", response[[x]])
+        })
+    }
+
+    response
 }

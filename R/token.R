@@ -34,3 +34,12 @@ yq_auth <- function(token) {
     character()
   }
 }
+
+must_have_token = function() {
+    if(yq_token() == "") {
+        stop("This feature needs token. \nPlease run ?whoami for more.",
+             call. = FALSE)
+    } else {
+        TRUE
+    }
+}
