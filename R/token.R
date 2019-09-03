@@ -35,11 +35,18 @@ yq_auth <- function(token) {
   }
 }
 
-must_have_token = function() {
-    if(yq_token() == "") {
+get_auth = function(need_token = FALSE) {
+    token = yq_token()
+    if (need_token) {
+      if (token == "") {
         stop("This feature needs token. \nPlease run ?yq_whoami for more.",
              call. = FALSE)
-    } else {
-        TRUE
+      }
     }
+    if (file.exists(.yuque_config_path)) {
+      login = jsonlite::read_json(.yuque_config_path, simplifyVector = TRUE)$login
+    } else {
+       stop("This feature needs login name. \nPlease run ?yq_config or ?yq_whoami for more.")
+    }
+    return(list(login = login, token = token))
 }

@@ -33,10 +33,6 @@ yq_config = function() {
         }
     }
 
-    message("Checking if the login name exist...")
-    r = yq(paste0("GET /users/", config$login))
-    if (status_code(r) != 200) stop("Bad login or internet, please check!", call. = FALSE)
-
     if (config$token != "") {
         message("Found token, checking it...")
         r =   yq(
@@ -54,6 +50,12 @@ yq_config = function() {
             }
         }
 
+    } else {
+        config$token = NULL
+        config = compact(config)
+        message("Checking if the login name exist...")
+        r = yq(paste0("GET /users/", config$login))
+        if (status_code(r) != 200) stop("Bad login or internet, please check!", call. = FALSE)
     }
 
     message("Saving info to ", .yuque_config_path)
@@ -71,6 +73,7 @@ update_config = function(x, path) {
         for (i in names(x)) {
             if (i %in% up_names) {
                 message("Updating ", i)
+            } else {
                 message("Adding ", i)
             }
             up_config[[i]] = x[[i]]
@@ -79,5 +82,3 @@ update_config = function(x, path) {
     }
 
 }
-
-#jsonlite::read_json("test.json", simplifyVector = TRUE)
