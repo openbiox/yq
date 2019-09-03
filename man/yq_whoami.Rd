@@ -4,7 +4,8 @@
 \alias{yq_whoami}
 \title{Info on current YuQue user}
 \usage{
-yq_whoami(.token = NULL, .api_url = NULL, .send_headers = NULL)
+yq_whoami(.token = NULL, .api_url = NULL, .send_headers = NULL,
+  show = TRUE)
 }
 \arguments{
 \item{.token}{Authentication token. Default to YUQUE_TOKEN
@@ -23,6 +24,8 @@ to \code{"application/json"} and the
 \code{"https://github.com/ShixiangWang/yq"}. This can be used
 to, e.g., provide a custom media type, in order to access a
 preview feature of the API.}
+
+\item{show}{default is \code{TRUE}, print info.}
 }
 \value{
 a \code{data.frame}

@@ -37,7 +37,7 @@ yq_auth <- function(token) {
 
 must_have_token = function() {
     if(yq_token() == "") {
-        stop("This feature needs token. \nPlease run ?whoami for more.",
+        stop("This feature needs token. \nPlease run ?yq_whoami for more.",
              call. = FALSE)
     } else {
         TRUE

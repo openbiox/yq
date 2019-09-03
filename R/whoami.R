@@ -28,6 +28,7 @@
 #' \code{yq("/users/your_login_name")}.
 #'
 #' @inheritParams yq
+#' @param show default is `TRUE`, print info.
 #'
 #' @return a `data.frame`
 #' @export
