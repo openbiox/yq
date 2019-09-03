@@ -14,7 +14,9 @@ Depends:
     httr
 Imports: 
     jsonlite,
-    magrittr
+    magrittr,
+    dplyr,
+    data.table
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
