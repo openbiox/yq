@@ -16,7 +16,10 @@ Imports:
     jsonlite,
     magrittr,
     dplyr,
-    data.table
+    data.table,
+    stringr,
+    pander,
+    rlang (>= 0.1.2)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -24,5 +27,6 @@ RoxygenNote: 6.1.1
 Suggests: 
     spelling,
     testthat (>= 2.1.0),
-    covr
+    covr,
+    roxygen2
 Language: en-US

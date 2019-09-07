@@ -48,16 +48,59 @@ parse_group_info = function(response, verbose = c("less", "all")) {
 
     }
 
-    suppressWarnings(ct <- ct %>% data.table::rbindlist(fill = TRUE))
+    if (is.list(ct[[1]])) {
+        suppressWarnings(ct <- ct %>% data.table::rbindlist(fill = TRUE))
+    } else {
+        ct <- dplyr::bind_cols(ct)
+    }
+
     ct = ct %>%
-        dplyr::as_tibble()
+        dplyr::as_tibble() %>%
+        dplyr::rename(
+            books = .data$books_count,
+            public_books = .data$public_books_count,
+            topics = .data$topics_count,
+            public_topics = .data$public_topics_count,
+            members = .data$members_count
+        )
 
     verbose = match.arg(verbose)
     if (verbose == "less") {
         message(paste(ct$name, collapse = " "))
     } else {
-
+        #// What's the meaning of public here?
+        cols2show = c("login", "name", "books", "topics", "members", "description")
+        show_table(ct[, cols2show], justify = "left", wrap_width = 20,
+                   caption = "Info of Group")
     }
-
     ct
 }
+
+parse_group_detail = function(response) {
+    #// TODO: how to reduce query time?
+    #// I mean user can use features like ls and ll but only query once
+    stopifnot(inherits(response, "response"))
+
+    if (response$status_code != 200) {
+        stop("Status code: ", response$status_code, ", please check token or internet.", call. = FALSE)
+    }
+
+    ability = content(response)$abilities
+    ability = dplyr::tibble(
+        level = c("overall", "group_user", "repo"),
+        read =  c(ability$read, NA, NA),
+        create = c(NA, ability$group_user$create, ability$repo$create),
+        update = c(ability$update, ability$group_user$update, ability$repo$update),
+        destroy = c(ability$destroy, ability$group_user$destroy, ability$repo$destroy)
+
+    )
+    res = list()
+    res$data = parse_group_info(response, verbose = "all")
+    res$ability = ability
+    show_table(ability, caption = "Ability to Group")
+
+    res
+}
+
+
+
