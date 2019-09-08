@@ -92,7 +92,7 @@ args(yq)
 This package is under heavy development, many features shown in YuQue API have
 not yet implemented. I will give a short intro to functions available.
 
-- `yq_whoami` - return personal/group profile
+- `yq_whoami` - return personal profile
 - `yq_token` - return your token used by API query
 - `yq_config` - set your login name and token (you can re-run it to reset)
 - `yq_list_groups` - return personal groups

@@ -77,8 +77,6 @@ parse_group_info = function(response, verbose = c("less", "all")) {
 }
 
 parse_group_detail = function(response) {
-    #// TODO: how to reduce query time?
-    #// I mean user can use features like ls and ll but only query once
     stopifnot(inherits(response, "response"))
 
     if (response$status_code != 200) {
@@ -102,5 +100,30 @@ parse_group_detail = function(response) {
     res
 }
 
+parse_group_member = function(response) {
+    stopifnot(inherits(response, "response"))
 
+    if (response$status_code != 200) {
+        stop("Status code: ", response$status_code,
+             ", please check token or internet or authority.", call. = FALSE)
+    } else {
+        ct = response %>% content()
+        ct = ct$data
+
+    }
+
+    short_info = purrr::map_df(ct, function(x) {
+        dplyr::tibble(
+            id = x$user$id,
+            login = x$user$login,
+            name = x$user$name,
+            description = ifelse(is.null(x$user$description), NA, x$user$description)
+        )
+    })
+
+    show_table(short_info, justify = "left", wrap_width = 20,
+               caption = "Info of Group Member")
+
+    ct
+}
 

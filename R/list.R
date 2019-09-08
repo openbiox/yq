@@ -34,3 +34,12 @@ yq_list_group_info = function(login) {
     r = parse_group_detail(r)
     invisible(r)
 }
+
+#' @export
+#' @rdname yq_list
+yq_list_group_members = function(login) {
+    auth = get_auth()
+    r = yq("/groups/:login/users", login = login, .token = auth$token)
+    r = parse_group_member(r)
+    invisible(r)
+}

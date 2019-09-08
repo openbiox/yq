@@ -4,6 +4,7 @@
 \alias{yq_list_groups}
 \alias{yq_list_public_groups}
 \alias{yq_list_group_info}
+\alias{yq_list_group_members}
 \title{List Information for Group, Repo etc.}
 \usage{
 yq_list_groups(verbose = c("less", "all"))
@@ -11,6 +12,8 @@ yq_list_groups(verbose = c("less", "all"))
 yq_list_public_groups(verbose = c("less", "all"))
 
 yq_list_group_info(login)
+
+yq_list_group_members(login)
 }
 \arguments{
 \item{verbose}{'all' or 'less', the former will print more messages.}

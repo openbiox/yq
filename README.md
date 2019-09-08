@@ -87,7 +87,7 @@ This package is under heavy development, many features shown in YuQue
 API have not yet implemented. I will give a short intro to functions
 available.
 
-  - `yq_whoami` - return personal/group profile
+  - `yq_whoami` - return personal profile
   - `yq_token` - return your token used by API query
   - `yq_config` - set your login name and token (you can re-run it to
     reset)
@@ -110,7 +110,7 @@ yq_list_groups(verbose = "all")
 #> ------------ ------------ ------- -------- --------- ----------------------
 #> elegant-r    优雅R        1       0        1         「优雅R」公众号       
 #> 
-#> biotrainee   生信技能树   2       0        54        生信技能树 创建于     
+#> biotrainee   生信技能树   2       0        60        生信技能树 创建于     
 #>                                                      2016年8月，是中国第   
 #>                                                      一家专注于生信知识体  
 #>                                                      系完善、促进生信学习  
