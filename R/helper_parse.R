@@ -121,7 +121,7 @@ parse_group_member = function(response) {
         )
     })
 
-    show_table(short_info, justify = "left", wrap_width = 20,
+    show_table(short_info, justify = "left", wrap_width = 30,
                caption = "Info of Group Member")
 
     ct
