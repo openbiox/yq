@@ -19,7 +19,8 @@ Imports:
     data.table,
     stringr,
     pander,
-    rlang (>= 0.1.2)
+    rlang (>= 0.1.2),
+    purrr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
