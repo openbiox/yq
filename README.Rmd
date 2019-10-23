@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 
 library(yq)
 ```
-# yq: An R client to access 'YuQue' API
+# yq: An R client to access 'YuQue' API <img src="https://github.com/openbiox/openbiox-wiki/blob/master/static/img/logo-long.png" align="right" width="200"/>
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
@@ -30,7 +30,7 @@ library(yq)
 You can install the development version of **yq** from GitHub with:
 
 ``` r
-remotes::install_github("ShixiangWang/yq")
+remotes::install_github("openbiox/yq")
 ```
 
 ## Configuration

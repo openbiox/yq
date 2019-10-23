@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# yq: An R client to access ‘YuQue’ API
+# yq: An R client to access ‘YuQue’ API <img src="https://github.com/openbiox/openbiox-wiki/blob/master/static/img/logo-long.png" align="right" width="200"/>
 
 <!-- badges: start -->
 
@@ -20,7 +20,7 @@ coverage](https://codecov.io/gh/ShixiangWang/yq/branch/master/graph/badge.svg)](
 You can install the development version of **yq** from GitHub with:
 
 ``` r
-remotes::install_github("ShixiangWang/yq")
+remotes::install_github("openbiox/yq")
 ```
 
 ## Configuration
@@ -129,7 +129,7 @@ yq_list_groups(verbose = "all")
 
 ``` r
 yq_list_public_groups()
-#> 前置仓订货助手 130td PAYCOO头条 网商测试 事业群2 事业群1 品质 蓝领人力项目 品牌规范分享群 运维分享文档 2022综合实践 承保域 168车行一六八 楼上楼大闸蟹 海纳市场运营 数字化场站 总经办 te 产品圈子 品宣内容工作小组
+#> guomics_protocol 通用电商团队模板 支持中心 大数据中心 供应链中心 研发中心 APP中心 运营中心 甩团 寄样 开智课程合作 电子签约h5 CMICT_基础知识库 运维 天印旗舰版 量化投资 财富号官方团队 人力行政部 Choppy Platform 教学资源
 ```
 
 ``` r
